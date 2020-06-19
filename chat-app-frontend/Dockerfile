@@ -10,6 +10,5 @@ COPY . /usr/src/app/frontend/
 ENV PATH=/usr/src/app/frontend/node_modules/.bin:$PATH
 
 # install dependencies
-COPY yarn.lock /usr/src/app/frontend/yarn.lock
 COPY package.json /usr/src/app/frontend/package.json
-RUN yarn install
+RUN yarn install --save
