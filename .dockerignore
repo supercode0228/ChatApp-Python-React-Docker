@@ -1,0 +1,12 @@
+chat-app-frontend/node_modules
+chat-app-frontend/build
+chat-app-backend/migrations
+
+*venv
+test/
+tests/
+venv/
+.git/
+*.git*
+*.aurora
+.*
