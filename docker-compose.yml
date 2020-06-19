@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  backend:
+    container_name: flask-api
+    restart: always
+    build:
+      context: ./chat-app-backend/
+      dockerfile: Dockerfile
+    command: python manage.py runserver --host 0.0.0.0
+    volumes:
+      - ./chat-app-backend:/usr/src/app/backend
+    ports:
+      - 5000:5000
+    environment:
+      - FLASK_APP=web/app.py
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://supercode:root@db:5432/accessbell-chat
+      - SQL_HOST=db
+      - SQL_PORT=5432
+      - DATABASE=postgres
+    depends_on:
+      - db
+  db:
+    image: postgres:12.3
+    container_name: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=supercode
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=accessbell-chat
+  frontend:
+    container_name: react-app
+    build:
+      context: ./chat-app-frontend/
+      dockerfile: Dockerfile
+    command: yarn start
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - HOST_URL=http://127.0.0.1:5000
+    volumes:
+      - ./chat-app-frontend:/usr/src/app/frontend
+    stdin_open: true
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  node_modules:
