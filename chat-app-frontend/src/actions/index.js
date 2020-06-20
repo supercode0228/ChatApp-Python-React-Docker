@@ -1,5 +1,7 @@
-import * as roomActions from "./rooms";
+import * as roomActions from './rooms';
+import * as roomUsersActions from './roomUsers';
 
 export {
-  roomActions,
+	roomActions,
+	roomUsersActions
 };
