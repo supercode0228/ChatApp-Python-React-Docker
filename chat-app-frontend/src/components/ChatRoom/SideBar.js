@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-// reactstrap components
-import {
-  Collapse,
-  Navbar,
-  Container,
-} from 'reactstrap';
+import { isEmpty } from 'lodash';
+
+import RoomItem from './RoomItem';
+import RoomUserItem from './RoomUserItem';
 
 class SideBar extends Component {
 	state = {
-    collapseOpen: false
+    collapseOpen: true
 	};
 	
 	// toggles collapse between opened and closed (true/false)
@@ -20,28 +18,60 @@ class SideBar extends Component {
 	
 	
 	render() {
-
+		const { rooms, users, onRoomClick } = this.props;
 		return (
-      <Navbar
+      <div
         className="chat-room__sidebar"
-        expand="md"
-        id="sidenav-main"
       >
-				<Container fluid>
           {/* Toggler */}
           <button
-            className="navbar-toggler"
+            className="chat-room__sidebar__hamburg"
             type="button"
             onClick={this.toggleCollapse}
           >
             <i className="fas fa-bars" />
           </button>
 					{/* Collapse */}
-          <Collapse navbar isOpen={this.state.collapseOpen}>
-						Menu
-					</Collapse>
-				</Container>
-			</Navbar>
+					<div className={`${this.state.collapseOpen ? 'd-block' : 'd-none'}`}>
+						<h4 className="chat-room__sidebar__title">Chat Room</h4>
+						<div className="chat-room__sidebar__items">
+							<h5>Rooms</h5>
+							<ul>
+								{
+									!isEmpty(rooms)
+									?
+									rooms.map(room => {
+										return (
+											<RoomItem
+												data={room}
+												key={room.id}
+												onClick={onRoomClick}
+											/>
+										)
+									})
+									:
+									<li>Please create Room.</li>
+								}
+							</ul>
+						</div>
+						<div className="chat-room__sidebar__items">
+							<h5>Direct Users</h5>
+							<ul>
+								{
+									!isEmpty(users)
+									?
+									users.map(user => {
+										return (
+											<RoomUserItem data={user} key={user.id} />
+										)
+									})
+									:
+									<p>No users.</p>
+								}
+							</ul>
+						</div>
+					</div>
+			</div>
 		)
 	}
 }
