@@ -42,7 +42,6 @@ services:
       - 3000:3000
     environment:
       - NODE_ENV=development
-      - HOST_URL=http://127.0.0.1:5000
     volumes:
       - ./chat-app-frontend:/usr/src/app/frontend
       - /usr/src/app/frontend/node_modules
