@@ -1,5 +1,6 @@
 import SideBar from './SideBar';
-
+import RoomItem from './RoomItem';
 export {
-	SideBar
+	SideBar,
+	RoomItem
 };
