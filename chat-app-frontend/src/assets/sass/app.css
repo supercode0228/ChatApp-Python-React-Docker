@@ -19,13 +19,13 @@ body, html {
 
 .chat-room {
   display: flex;
-  height: 100%;
-  font-size: 16px;
-  color: #a0a4a7; }
+  height: 100%; }
   .chat-room__sidebar {
     width: 250px;
     min-width: 250px;
     height: 100%;
+    font-size: 16px;
+    color: #a0a4a7;
     background: #1d232a; }
     .chat-room__sidebar__title {
       padding: 15px; }
@@ -49,6 +49,24 @@ body, html {
   .chat-room__message {
     width: 100%;
     height: 100%;
-    background: #f1f7f9; }
+    background: #f1f7f9;
+    font-size: 14px;
+    color: #293037; }
+    .chat-room__message-inactive {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
     .chat-room__message__header {
+      padding: 15px 20px;
       border-bottom: 1px solid #d6d7da; }
+    .chat-room__message__type {
+      width: calc(100% - 250px);
+      position: absolute;
+      bottom: 0; }
+      .chat-room__message__type__input {
+        height: 55px;
+        border-radius: 0; }
+      .chat-room__message__type__send {
+        border-radius: 0;
+        padding: 0 25px; }
