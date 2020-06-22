@@ -20,6 +20,10 @@ class UserModel(db.Model):
 		self.email = data.get('email')
 		self.created_at = datetime.datetime.utcnow()
 		self.updated_at = datetime.datetime.utcnow()
+	
+	@staticmethod
+	def get_user_by_email(email):
+		return UserModel.query.filter_by(email=email).first()
 
 # add this class
 class UserSchema(Schema):
