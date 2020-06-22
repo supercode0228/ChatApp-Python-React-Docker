@@ -23,13 +23,13 @@ def create_db():
 # define the command for inserting sample data for test.
 @manager.command
 def seed_db():
-	db.session.add(UserModel({'name':'John Doe'}))
-	db.session.add(UserModel({'name':'Katin Dong'}))
-	db.session.add(UserModel({'name':'Steven Hanna'}))
-	db.session.add(UserModel({'name':'Chestan Ravi'}))
-	db.session.add(UserModel({'name':'Mark Evans'}))
-	db.session.add(UserModel({'name':'Rachel Zimmer'}))
-	db.session.add(UserModel({'name':'Peter Lount'}))
+	db.session.add(UserModel({'name':'John Doe', 'email':'johndoe@test.com'}))
+	db.session.add(UserModel({'name':'Katin Dong', 'email':'katindong@test.com'}))
+	db.session.add(UserModel({'name':'Steven Hanna', 'email':'stevenhanna@test.com'}))
+	db.session.add(UserModel({'name':'Chestan Ravi', 'email':'chestanravi@test.com'}))
+	db.session.add(UserModel({'name':'Mark Evans', 'email':'markevans@test.com'}))
+	db.session.add(UserModel({'name':'Rachel Zimmer', 'email':'rachelzimmer@test.com'}))
+	db.session.add(UserModel({'name':'Peter Lount', 'email':'peterlount@test.com'}))
 
 	db.session.add(RoomModel({'name':'Room1'}))
 	db.session.add(RoomModel({'name':'Room2'}))
