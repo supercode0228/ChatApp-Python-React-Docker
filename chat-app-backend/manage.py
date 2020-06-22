@@ -3,6 +3,7 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
 from web.app import create_app, db, UserModel, RoomModel
+from web.server import Server
 
 env_name = os.getenv('FLASK_ENV')
 app = create_app(env_name)
@@ -11,12 +12,15 @@ migrate = Migrate(app, db)
 
 manager = Manager(app)
 
+manager.add_command("runserver", Server())
+
 manager.add_command('db', MigrateCommand)
 
 # define the command for creating db
 @manager.command
-def create_db():
-	db.drop_all()
+def create_db(db_first=False):
+	if db_first == False:
+		db.drop_all()
 	db.create_all()
 	db.session.commit()
 
