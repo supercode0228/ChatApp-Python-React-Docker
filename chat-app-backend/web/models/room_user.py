@@ -32,6 +32,10 @@ class RoomUserModel(db.Model):
 	@staticmethod
 	def get_room_users(room_id):
 		return RoomUserModel.query.filter_by(room_id=room_id).all()
+
+	@staticmethod
+	def get_room_by_id(user_id, room_id):
+		return RoomUserModel.query.filter_by(user_id=user_id, room_id=room_id).first()
 	
 	def save(self):
 		db.session.add(self)
