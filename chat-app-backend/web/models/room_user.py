@@ -12,7 +12,8 @@ class RoomUserModel(db.Model):
 	id = db.Column(db.Integer, primary_key=True, nullable=False)
 	room_id = db.Column(db.Integer, db.ForeignKey('rooms.id'), nullable=False)
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-	users = db.relationship(
+	user_name = db.Column(db.String(128), nullable=False)
+	user = db.relationship(
 		'UserModel',
 		backref=db.backref('room_users', cascade='all, delete-orphan', lazy='dynamic')
 	)
@@ -24,6 +25,7 @@ class RoomUserModel(db.Model):
 
 		self.room_id = data.get('room_id')
 		self.user_id = data.get('user_id')
+		self.user_name = data.get('user_name')
 		self.created_at = datetime.datetime.utcnow()
 		self.updated_at = datetime.datetime.utcnow()
 	
@@ -45,6 +47,7 @@ class RoomUserSchema(Schema):
 	id = fields.Int(dump_only=True)
 	room_id = fields.Int(required=True)
 	user_id = fields.Int(required=True)
+	user_name = fields.Str(required=True)
 	created_at = fields.DateTime(dump_only=True)
 	updated_at = fields.DateTime(dump_only=True)
-	users = fields.Nested(UserSchema)
+	user = fields.Nested(UserSchema)
