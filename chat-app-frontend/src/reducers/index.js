@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 
 import roomsReducer from './rooms';
-import roomUsersReducer from './room-users';
+import { fetchRoomUsersReducer, postRoomUserReducer } from './room-users';
 
 const appReducer = combineReducers({
 	rooms: roomsReducer,
-	roomUsers: roomUsersReducer,
+	roomUsers: fetchRoomUsersReducer,
+	roomUser: postRoomUserReducer
 });
 
 const rootReducer = (state, action) => {

@@ -9,4 +9,9 @@ export default {
 		data: {},
 		error: {}
 	},
+	roomUser: {
+		loading: true,
+		data: {},
+		error: {}
+	},
 };
