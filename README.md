@@ -6,6 +6,8 @@ Verify that you have docker installed.
 
 ## Development
 
+All commands should be run under the project root directory.
+
 ### `1. docker-compose build`
 
  Will build the docker container for backend and frontend and postgresql.
@@ -49,5 +51,12 @@ Verify that you have docker installed.
   5 | Mark Evans    | markevans@test.com    |
   6 | Rachel Zimmer | rachelzimmer@test.com |
   7 | Peter Lount   | peterlount@test.com   |
+
+## Demo Video Link
+https://www.dropbox.com/s/227cir0ju5gprhc/ChatApp-Video.mov?dl=0
+
+## Demo Document
+https://www.dropbox.com/s/oqfz8b6o2qtww8i/Chat%20Room%20Docment.pdf?dl=0
+
 ## Attributions
  This project was developed by William Lee, from Accessbell challenge @ Challenge 
