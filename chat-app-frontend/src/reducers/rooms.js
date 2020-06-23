@@ -5,8 +5,8 @@ import {
 } from "../constants";
 import initialState from "./initialState";
 
-export default function fetchRoomsReducer(state = initialState.rooms, { type, payload }) {
-  switch (type) {
+export default function fetchRoomsReducer(state = initialState.rooms, action) {
+  switch (action.type) {
     case FETCH_ROOMS_REQUEST:
       return Object.assign({}, state, {
         loading: true
@@ -14,12 +14,12 @@ export default function fetchRoomsReducer(state = initialState.rooms, { type, pa
     case FETCH_ROOMS_SUCCESS:
       return Object.assign({}, state, {
         loading: false,
-        data: payload.data,
+        data: action.data,
       });
     case FETCH_ROOMS_ERROR:
       return Object.assign({}, state, {
         loading: false,
-        error: payload.error,
+        error: action.error,
       });
     default:
       return state;

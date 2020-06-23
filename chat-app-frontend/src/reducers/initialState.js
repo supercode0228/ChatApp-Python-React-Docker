@@ -14,4 +14,14 @@ export default {
 		data: {},
 		error: {}
 	},
+	messages: {
+		loading: true,
+		data: {},
+		error: {}
+	},
+	message: {
+		loading: true,
+		data: {},
+		error: {}
+	},
 };
