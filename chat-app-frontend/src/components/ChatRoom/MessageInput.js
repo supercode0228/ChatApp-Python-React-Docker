@@ -21,9 +21,15 @@ class MessageInput extends Component {
 		})
 	}
 
+	onSendMsg = (e, message) => {
+		this.setState({
+			message: ''
+		});
+		this.props.onSendMsg(e, message);
+	}
+
 	render() {
 		const { message } = this.state;
-		const { onSendMsg } = this.props;
 
 		return (
 			<div className="chat-room__message__type">
@@ -38,7 +44,7 @@ class MessageInput extends Component {
 					<InputGroupAddon addonType="append">
 						<Button
 							className="chat-room__message__type__send"
-							onClick={(e) => onSendMsg(e, message)}
+							onClick={(e) => this.onSendMsg(e, message)}
 						>
 							Send
 						</Button>
