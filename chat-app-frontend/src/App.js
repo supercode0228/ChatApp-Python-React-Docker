@@ -5,17 +5,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import configureStore from './store';
 import routes from './routes';
 
-import {API_URL} from './constants';
-
-import io from 'socket.io-client';
-
+import socket from './utils/socket';
 class App extends Component {
-
 	componentDidMount() {
-		const socket = io.connect(API_URL);
-		socket.emit('connected');
+		socket.emit('connected')
 	}
-
 	render() {
 		return (
 			<Provider store={configureStore()}>
