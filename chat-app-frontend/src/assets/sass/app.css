@@ -11,12 +11,6 @@ body, html {
 .App {
   height: 100%; }
 
-.d-block {
-  display: block; }
-
-.d-none {
-  display: none; }
-
 .chat-room {
   display: flex;
   height: 100%; }
@@ -27,8 +21,20 @@ body, html {
     font-size: 16px;
     color: #a0a4a7;
     background: #1d232a; }
+    @media only screen and (max-width: 768px) {
+      .chat-room__sidebar {
+        position: fixed;
+        display: none; } }
+    .chat-room__sidebar__hamburg {
+      position: fixed;
+      top: 15px;
+      z-index: 1; }
     .chat-room__sidebar__title {
-      padding: 15px; }
+      padding: 15px;
+      margin-bottom: 0; }
+      @media only screen and (max-width: 768px) {
+        .chat-room__sidebar__title {
+          margin-left: 20px; } }
     @media only screen and (min-width: 768px) {
       .chat-room__sidebar__hamburg {
         display: none; } }
@@ -60,6 +66,14 @@ body, html {
     .chat-room__message__header {
       padding: 15px 20px;
       border-bottom: 1px solid #d6d7da; }
+      @media only screen and (max-width: 768px) {
+        .chat-room__message__header {
+          margin-left: 20px; } }
+      .chat-room__message__header h4 {
+        margin-bottom: 0; }
+    .chat-room__message__body {
+      height: calc(100% - 122px);
+      overflow: auto; }
     .chat-room__message__type {
       width: calc(100% - 250px);
       position: absolute;
@@ -70,3 +84,19 @@ body, html {
       .chat-room__message__type__send {
         border-radius: 0;
         padding: 0 25px; }
+    .chat-room__message__item {
+      display: flex;
+      padding: 10px;
+      background: white;
+      border: 1px solid #f1f7f9;
+      border-radius: 3px;
+      margin: 10px; }
+      .chat-room__message__item__username {
+        display: flex;
+        flex-direction: column; }
+      .chat-room__message__item__content {
+        height: fit-content;
+        background: #0084ff;
+        padding: 15px 25px;
+        margin-left: 15px;
+        border-radius: 3px; }

@@ -20,19 +20,20 @@ class SideBar extends Component {
 	render() {
 		const { rooms, users, onRoomClick } = this.props;
 		return (
-      <div
-        className="chat-room__sidebar"
-      >
-          {/* Toggler */}
-          <button
-            className="chat-room__sidebar__hamburg"
-            type="button"
-            onClick={this.toggleCollapse}
-          >
-            <i className="fas fa-bars" />
-          </button>
+			<>
+				{/* Toggler */}
+				<button
+					className="chat-room__sidebar__hamburg"
+					type="button"
+					onClick={this.toggleCollapse}
+				>
+					<i className="fas fa-bars" />
+				</button>
+				<div
+					className={`chat-room__sidebar ${this.state.collapseOpen ? 'd-block' : 'd-none'}`}
+				>
 					{/* Collapse */}
-					<div className={`${this.state.collapseOpen ? 'd-block' : 'd-none'}`}>
+					<div>
 						<h4 className="chat-room__sidebar__title">Chat Room</h4>
 						<div className="chat-room__sidebar__items">
 							<h5>Rooms</h5>
@@ -71,7 +72,8 @@ class SideBar extends Component {
 							</ul>
 						</div>
 					</div>
-			</div>
+				</div>
+			</>
 		)
 	}
 }
