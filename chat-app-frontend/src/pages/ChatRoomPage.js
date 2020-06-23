@@ -59,16 +59,21 @@ class ChatRoomPage extends Component {
 	onSubmitJoin = (params) => {
 		const { roomUsersActions, messagesActions } = this.props;
 		roomUsersActions.postRoomUserRequest(params).then(() => {
-			localStorage.setItem('user', JSON.stringify(this.props.roomUser.data.data));
-			roomUsersActions.fetchRoomUsersRequest(params.room_id);
-			messagesActions.fetchMessagesRequest(params.room_id).then(() => {
-				this.setState({
-					isJoin: true,
-					modalRJDlg: false,
-					messages: this.props.messages.data.data
+			const { roomUser } = this.props;
+			if (roomUser.data.status_code === 200) {
+				localStorage.setItem('user', JSON.stringify(roomUser.data.data));
+				roomUsersActions.fetchRoomUsersRequest(params.room_id);
+				messagesActions.fetchMessagesRequest(params.room_id).then(() => {
+					this.setState({
+						isJoin: true,
+						modalRJDlg: false,
+						messages: this.props.messages.data.data
+					});
+					this.scrollToBottom();
 				});
-				this.scrollToBottom();
-			});
+			} else {
+				window.alert("User Not Exist!");
+			}
 		});
 	}
 
