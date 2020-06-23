@@ -1,0 +1,45 @@
+Flask + React + Socket.IO + Postgresql Chat Room Challenge
+A simple chat application that features a Flask back-end, React front-end, and Socket.io.
+
+Easy Start:
+Verify that you have NPM, Python3, and Pip installed.
+
+Development
+Setup
+1. docker-compose build
+
+$ Will build the docker container for backend and frontend and postgresql.$
+
+2. docker-compose up
+
+$ Will run the project in docker environment.$
+
+3. docker-compose exec backend python manage.py create_db
+
+$ Will create the database named accessbell-chat.$
+
+4. docker-compose exec backend python manage.py db init
+
+$ Will initialize the created DB and generate the migrations.$
+
+5. docker-compose exec backend python manage.py db migrate
+
+$ Will generate the tables based on defined schemas(users, rooms, messages, room_users).$
+
+6. docker-compose exec backend python manage.py db upgrade
+
+$ Will upgrade the changed database.$
+
+7. docker-compose exec backend python manage.py seed_db
+
+8. Start the React development server:
+
+$ This will startup a React development server at http://localhost:3000.$
+$ Visit http://localhost:3000 in your browser to view the application.$
+
+9. Start the Flask development server:
+
+$ This will startup a Flask development server at http://localhost:5000.$
+
+Attributions
+This project was developed by William Lee, from Accessbell challenge @ Challenge
